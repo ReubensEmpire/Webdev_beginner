@@ -1,0 +1,32 @@
+body{
+    margin: 0px;
+}
+.box{
+    width: 840px;
+    height: 400px;
+    border: 1px solid;
+    font: 40px;
+    background-color: blue;
+    
+    
+}
+.box2{
+    width: 1350px;
+    height: 600px;
+    border: 1px solid;
+    font: 40px;
+    background-color: cornsilk;
+    
+}
+.header{
+    width: 100%;
+    height: 80px;
+    display: block;
+    background-color: whitesmoke;
+    
+
+}
+.footer{
+     margin-top: -10px;
+    
+}

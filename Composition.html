@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composition of Elements</title>
+</head>
+<body>
+    <style>
+        header {
+                text-align: left;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+            header nav a {
+                margin-right: 15px;
+                text-decoration: none;
+                color: #333;
+            }
+    </style>
+        <title>Left Aligned Header</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="test.html" target="_blank">Home</a>
+                <a href="Data.html" target="_blank">Data</a>
+                <a href="Composition.html" target="_blank">Composition of elements</a>
+                <a href="reserchpaper.html" target="_blank">Research</a>
+                <a href="newinteractive.html">Interactives</a>
+            </nav>
+        </header>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Planet Habitability</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+                form {
+                    max-width: 500px;
+                    margin: auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    background-color: #f9f9f9;
+                }
+                label, input, button {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+                .examples {
+                    margin-bottom: 20px;
+                    color: gray;
+                }
+                canvas {
+                    display: block;
+                    margin: auto;
+                }
+                .result {
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Planet Habitability Check</h1>
+            <form id="element-form">
+                <div class="examples">
+                    <p>Example concentrations required for habitability:</p>
+                    <p>Oxygen: 20-25%</p>
+                    <p>Carbon Dioxide: 0.04-0.06%</p>
+                    <p>Nitrogen: 75-80%</p>
+                    <p>Water: 0-10%</p>
+                </div>
+                <label for="oxygen">Oxygen (%):</label>
+                <input type="number" id="oxygen" name="oxygen" required>
+        
+                <label for="carbonDioxide">Carbon Dioxide (%):</label>
+                <input type="number" id="carbonDioxide" name="carbonDioxide" required>
+        
+                <label for="nitrogen">Nitrogen (%):</label>
+                <input type="number" id="nitrogen" name="nitrogen" required>
+        
+                <label for="water">Water (%):</label>
+                <input type="number" id="water" name="water" required>
+        
+                <button type="button" onclick="generateGraph()">Check Habitability</button>
+            </form>
+            <canvas id="myChart" width="400" height="200"></canvas>
+            <div class="result" id="result"></div>
+        
+            <script>
+                function generateGraph() {
+                    const oxygen = parseFloat(document.getElementById('oxygen').value);
+                    const carbonDioxide = parseFloat(document.getElementById('carbonDioxide').value);
+                    const nitrogen = parseFloat(document.getElementById('nitrogen').value);
+                    const water = parseFloat(document.getElementById('water').value);
+        
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Water'],
+                            datasets: [{
+                                label: 'Element Concentration (%)',
+                                data: [oxygen, carbonDioxide, nitrogen, water],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(153, 102, 255, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+        
+                    const habitability = (oxygen >= 20 && oxygen <= 25) && 
+                                         (carbonDioxide >= 0.04 && carbonDioxide <= 0.06) && 
+                                         (nitrogen >= 75 && nitrogen <= 80) && 
+                                         (water > 0 && water <= 10);
+        
+                    const result = document.getElementById('result');
+                    result.innerHTML = habitability ? "Organisms can live on this planet!" : "Organisms cannot live on this planet.";
+                }
+            </script>
+        </body>
+        </html>
+        
+
+</body>
+</html>

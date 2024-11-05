@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronaut Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: white;
+        }
+        .quiz-container {
+            width: 50%;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Astronaut Quiz</h1>
+        <div class="question">
+            <p>1. Nearest planet to sun</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Neil Armstrong"> Mercury</label>
+                <label><input type="radio" name="q1" value="Buzz Aldrin"> Earth</label>
+                <label><input type="radio" name="q1" value="Yuri Gagarin"> Messier87</label>
+                <label><input type="radio" name="q1" value="Alan Shepard"> sirus</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. what was the James Webb telescope named after?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Apollo 11"> Albert Thomas</label>
+                <label><input type="radio" name="q2" value="Gemini 8"> Reuben Roby</label>
+                <label><input type="radio" name="q2" value="Sputnik 1"> Davy Krickpatrick</label>
+                <label><input type="radio" name="q2" value="Mercury-Atlas 6"> James E. Webb</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. What is the term for the path a spacecraft takes around a celestial body?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Orbit"> Orbit</label>
+                <label><input type="radio" name="q3" value="Trajectory"> Trajectory</label>
+                <label><input type="radio" name="q3" value="Course"> Course</label>
+                <label><input type="radio" name="q3" value="Flight path"> Flight path</label>
+            </div>
+        </div>
+        <button id="submit-btn" onclick="checkAnswers()">Submit</button>
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: "Mercury",
+                q2: "James E Webb",
+                q3: "Orbit"
+            };
+            
+            let score = 0;
+            const formElements = document.querySelectorAll('input[type="radio"]:checked');
+            formElements.forEach(el => {
+                if (el.value === answers[el.name]) {
+                    score++;
+                }
+            });
+            
+            const result = document.getElementById('result');
+            result.textContent = `You scored ${score} out of 3.`;
+        }
+    </script>
+</body>
+</html>
+
